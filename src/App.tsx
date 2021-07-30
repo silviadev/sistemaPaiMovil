@@ -20,6 +20,9 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
+import Login from './pages/Login';
+import Dashboard from './pages/Profile';
+
 /* Theme variables */
 import './theme/variables.css';
 
@@ -28,14 +31,12 @@ const App: React.FC = () => {
     <IonApp>
       <IonReactRouter>
         <IonSplitPane contentId="main">
-          <Menu />
+          {/* <Menu /> */}
           <IonRouterOutlet id="main">
             <Route path="/" exact={true}>
-              <Redirect to="/page/Inbox" />
+              <Login />
             </Route>
-            <Route path="/page/:name" exact={true}>
-              <Page />
-            </Route>
+            <Route path="/dashboard/:id" component={Dashboard} exact={true} />
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>
