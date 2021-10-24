@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 
 export const AuthContext = React.createContext<any>(undefined);
 
+//const persistedState = JSON.parse(window.localStorage['persistedState']);
 export const AuthProvider: React.FC = ({ children }) => {
   const [authValues, setAuthValues] = React.useState<any>({
     authenticated: false,
     user: null,
   });
+
+  useEffect(() => {
+    window.localStorage['persistedState'] = JSON.stringify({
+      user: authValues.user
+    });
+  }, [authValues])
 
   const login = async ({ user, password }: { user: string; password: string }) => {
     const api = axios.create({
@@ -21,39 +28,23 @@ export const AuthProvider: React.FC = ({ children }) => {
     return api.post("/login", loginData)
       .then(res => {
         return new Promise((resolve) => {
-            setAuthValues({
-              authenticated: true,
-              user: res.data
-            });
-            resolve(true);
-      })
-      .catch(error => {
-        return new Promise((resolve) => {
           setAuthValues({
-            authenticated: false,
-            user: null
+            authenticated: true,
+            user: res.data
           });
-          resolve(false);
+          resolve(true);
+        })
+          .catch(error => {
+            return new Promise((resolve) => {
+              setAuthValues({
+                authenticated: false,
+                user: null
+              });
+              resolve(false);
+            })
+          })
       })
-    })
-  })
-}
-    /* return new Promise((resolve) => {
-      if (user === "aaron" && password === "aaron") {
-        const loginData = {
-          nombreUsuario: user,
-          contrasena: password,
-        };
-
-        setAuthValues({
-          authenticated: true,
-          user: { user, id: 1 },
-        });
-        resolve(true);
-      } else {
-        resolve(false);
-      }
-    }); */
+  }
 
   const logout = () => {
     setAuthValues({

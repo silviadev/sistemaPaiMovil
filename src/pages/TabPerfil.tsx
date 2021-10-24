@@ -15,6 +15,7 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
+import { useHistory } from "react-router-dom";
 import { book, build, colorFill, grid } from "ionicons/icons";
 //import "./Tab1.css";
 import AuthContext from "../context/my-context";
@@ -24,6 +25,7 @@ import axios from "axios";
 const TabPerfil: React.FunctionComponent = () => {
   const { authValues } = React.useContext(AuthContext);
   const [users, setUsers] = useState<Array<any>>([]);
+  const history = useHistory();
 
   useEffect(() => {
     console.log(authValues);
@@ -49,8 +51,11 @@ const TabPerfil: React.FunctionComponent = () => {
       </IonHeader>
       <IonContent>
         {users.map((user, i) => {
+          console.log("user: ",user);
           return (
-            <IonCard key={i} href="/dashboard/perfil/perfilPaciente">
+            <IonCard key={i} onClick={(e) => {
+              e.preventDefault();
+              history.push('/dashboard/perfil/perfilPaciente/'+user.idPaciente)}} >
               <IonCardHeader>
                 <IonCardTitle>{user.nombre + " " + user.primerApellido+ " " + user.segundoApellido}</IonCardTitle>
                 <IonCardSubtitle><h5>{user.codigo}</h5></IonCardSubtitle>

@@ -43,7 +43,7 @@ const App: React.FC = () => {
             <Login />
           </Route>
           <Route path="/dashboard/:tab" component={Dashboard} exact={true} />
-          <Route path="/dashboard/:tab/:details" component={Dashboard} exact={true} />
+          <Route path="/dashboard/:tab/:details/:id?" component={Dashboard} exact={true} />
         </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>

@@ -56,8 +56,8 @@ const Dashboard: React.FC<ResetProps> = ({ match }) => {
   return (
     <IonTabs>
       <IonRouterOutlet>
-        <Route path="/dashboard/perfil" component={TabPerfil} exact={true} />
-        <Route path="/dashboard/perfil/perfilPaciente" component={PerfilPaciente} />
+        <Route path="/dashboard/perfil" component={TabPerfil} />
+        <Route path="/dashboard/perfil/perfilPaciente/:id" component={PerfilPaciente} />
         <Route path="/dashboard/notificaciones" component={Tab2} exact={true} />
         <Route path="/dashboard/notificaciones/details" component={Details} />
         <Route path="/dashboard/tab3" component={Tab3} />
