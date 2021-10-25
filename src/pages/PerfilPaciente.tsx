@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { IonBackButton, IonButtons, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonLabel, IonButton, IonList, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent } from "@ionic/react";
+import { IonBackButton, IonButtons, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonLabel, IonButton, IonList, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonBadge } from "@ionic/react";
 import { useParams } from "react-router";
 import axios from "axios";
 
@@ -40,7 +40,7 @@ const PerfilPaciente: React.FunctionComponent = ({ match }: any) => {
           return (
             <IonCard key={i} color={color} >
               <IonCardHeader>
-                <IonCardSubtitle>{vac["rangoMesInicial"]} Meses</IonCardSubtitle>
+                <IonCardSubtitle><IonBadge color="warning">{vac["rangoMesInicial"]} Meses</IonBadge></IonCardSubtitle>
                 <IonCardTitle>{vac["nombrevacuna"]}</IonCardTitle>
               </IonCardHeader>
 

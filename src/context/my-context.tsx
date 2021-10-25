@@ -8,6 +8,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   const [authValues, setAuthValues] = React.useState<any>({
     authenticated: false,
     user: null,
+    mensajeError: ""
   });
 
   useEffect(() => {
@@ -25,24 +26,30 @@ export const AuthProvider: React.FC = ({ children }) => {
       nombreUsuario: user,
       contrasena: password,
     };
+
     return api.post("/login", loginData)
       .then(res => {
+        console.log("respuesta:", res);
         return new Promise((resolve) => {
           setAuthValues({
             authenticated: true,
             user: res.data
           });
-          resolve(true);
+          resolve({ status: true });
         })
-          .catch(error => {
-            return new Promise((resolve) => {
-              setAuthValues({
-                authenticated: false,
-                user: null
-              });
-              resolve(false);
-            })
+
+      })
+      .catch(error => {
+        if (error.response.data) {
+          const mensajeError = JSON.parse(error.response.data);
+          return new Promise((resolve) => {
+            setAuthValues({
+              authenticated: false,
+              user: null,
+            });
+            resolve({ status: false, mensajeError });
           })
+        }
       })
   }
 

@@ -13,6 +13,7 @@ import {
   IonToolbar,
   IonTitle,
   IonLabel,
+  IonText,
 } from "@ionic/react";
 
 
@@ -26,35 +27,24 @@ const Login = () => {
   const history = useHistory();
   const [usuario, setUsuario] = useState("");
   const [contrasena, setContrasena] = useState("");
+  const [errorLogin, setErrorLogin] = useState("");
 
   const handleLogin = async () => {
-    let result = await login({ user: usuario, password: contrasena });
-    if (result) {
-      history.push("/dashboard/perfil");
+    try {
+      let result = await login({ user: usuario, password: contrasena });
+      if (result.mensajeError) 
+      {
+        setErrorLogin(result.mensajeError.message);
+      }
+      if (result.status) {
+        history.push("/dashboard/perfil");
+      }
+    } catch (error) {
+      console.log("try error!!!!!!!");
+      console.log(error);
     }
-  };
-  /* const handleLogin = () => {
-    const loginData = {
-      nombreUsuario: usuario,
-      contrasena: contrasena,
-    };
-    const api = axios.create({
-      baseURL: `https://www.paibolivia.org/api`,
-      withCredentials: false,
-    });
 
-    api.post("/login", loginData)
-      .then(res => {
-        console.log(res);
-        console.log("login!!! successfully!!!");
-        history.push("/dashboard/" + res.data.idUsuario);
-      })
-      .catch(error => {
-        console.log("error!!!!", error);
-        //setMessage("Auth failure! Please create an account");
-        //setIserror(true)
-      })
-  }; */
+  };
 
   return (
     <IonPage>
@@ -84,6 +74,8 @@ const Login = () => {
                   onIonChange={(e) => setContrasena(e.detail.value!)}
                 ></IonInput>
               </IonItem>
+              <IonText color="danger"><sub>{errorLogin}</sub></IonText>
+              
             </IonCol>
           </IonRow>
           <IonRow>
