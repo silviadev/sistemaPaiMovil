@@ -25,7 +25,7 @@ import { IonItem, IonLabel, IonAvatar } from "@ionic/react";
 import TabPerfil from "./TabPerfil";
 import PerfilPaciente from "./PerfilPaciente";
 import Tab2 from "./TabNotificiaciones";
-import Tab3 from "./Tab3";
+import TabConfiguracion from "./TabConfiguracion";
 import Details from "./Details";
 import { apps, home, personCircle } from "ionicons/icons";
 
@@ -60,7 +60,7 @@ const Dashboard: React.FC<ResetProps> = ({ match }) => {
         <Route path="/dashboard/perfil/perfilPaciente/:id" component={PerfilPaciente} />
         <Route path="/dashboard/notificaciones" component={Tab2} exact={true} />
         <Route path="/dashboard/notificaciones/details" component={Details} />
-        <Route path="/dashboard/tab3" component={Tab3} />
+        <Route path="/dashboard/configuracion" component={TabConfiguracion} />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
         <IonTabButton tab="perfil" href="/dashboard/perfil">
@@ -71,7 +71,7 @@ const Dashboard: React.FC<ResetProps> = ({ match }) => {
           <IonIcon icon={apps} />
           <IonLabel>Notificaciones</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="tab3" href="/dashboard/tab3">
+        <IonTabButton tab="configuraciones" href="/dashboard/configuracion">
           <IonIcon icon={personCircle} />
           <IonLabel>Perfil</IonLabel>
         </IonTabButton>

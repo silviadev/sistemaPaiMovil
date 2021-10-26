@@ -27,7 +27,6 @@ import "./theme/variables.css";
 
 import Tab1 from "./pages/TabPerfil";
 import Tab2 from "./pages/TabNotificiaciones";
-import Tab3 from "./pages/Tab3";
 import Details from "./pages/Details";
 import { apps, home, personCircle } from "ionicons/icons";
 

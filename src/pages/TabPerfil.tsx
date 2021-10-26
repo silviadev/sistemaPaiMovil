@@ -20,6 +20,7 @@ import { book, build, colorFill, grid } from "ionicons/icons";
 //import "./Tab1.css";
 import AuthContext from "../context/my-context";
 import axios from "axios";
+import "./TabPerfil.css";
 
 
 const TabPerfil: React.FunctionComponent = () => {
@@ -51,11 +52,11 @@ const TabPerfil: React.FunctionComponent = () => {
       </IonHeader>
       <IonContent>
         {users.map((user, i) => {
-          console.log("user: ",user);
+          const color = "color-paciente-" + user.sexo;
           return (
             <IonCard key={i} onClick={(e) => {
               e.preventDefault();
-              history.push('/dashboard/perfil/perfilPaciente/'+user.idPaciente)}} >
+              history.push('/dashboard/perfil/perfilPaciente/'+user.idPaciente)}} className={color}>
               <IonCardHeader>
                 <IonCardTitle>{user.nombre + " " + user.primerApellido+ " " + user.segundoApellido}</IonCardTitle>
                 <IonCardSubtitle><h5>{user.codigo}</h5></IonCardSubtitle>

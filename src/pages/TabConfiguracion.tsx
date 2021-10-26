@@ -1,3 +1,4 @@
+import React from "react";
 import {
   IonCard,
   IonCardContent,
@@ -7,6 +8,7 @@ import {
   IonContent,
   IonHeader,
   IonIcon,
+  IonInput,
   IonItem,
   IonLabel,
   IonList,
@@ -14,31 +16,27 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import { book, build, colorFill, grid } from "ionicons/icons";
-import React from "react";
-//import "./Tab1.css";
-const Tab3Page: React.FunctionComponent = () => {
+import { book, build, logOut } from "ionicons/icons";
+import AuthContext from "../context/my-context";
+
+const TabConfiguracionPage: React.FunctionComponent = () => {
+  const { logout, authValues } = React.useContext(AuthContext);
+
+  const onClick = ()=> {
+    logout();
+    window.location.href = "/";
+  }
+
   return (
     <React.Fragment>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Tab 3</IonTitle>
+          <IonTitle>Configuracion</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonCard class="welcome-card">
-          <img src="/assets/shapes.svg" alt="" />
-          <IonCardHeader>
-            <IonCardSubtitle>Get Started</IonCardSubtitle>
-            <IonCardTitle>Welcome to Ionic</IonCardTitle>
-          </IonCardHeader>
-          <IonCardContent>
-            <p>
-              Now that your app has been created, you'll want to start building out features and components. Check out
-              some of the resources below for next steps.
-            </p>
-          </IonCardContent>
-        </IonCard>
+        <IonLabel>{authValues.user.nombre + " " + authValues.user.primerApellido + " "+  authValues.user.segundoApellido}
+          </IonLabel>
 
         <IonList lines="none">
           <IonListHeader>
@@ -52,8 +50,8 @@ const Tab3Page: React.FunctionComponent = () => {
             <IonIcon slot="start" color="medium" icon={build} />
             <IonLabel>Cambiar contraseña</IonLabel>
           </IonItem>
-          <IonItem href="https://ionicframework.com/docs/layout/structure" target="_blank">
-            <IonIcon slot="start" color="medium" icon={grid} />
+          <IonItem onClick={onClick} >
+            <IonIcon slot="start" color="medium" icon={logOut} />
             <IonLabel>Cerrar session</IonLabel>
           </IonItem>
         </IonList>
@@ -62,4 +60,4 @@ const Tab3Page: React.FunctionComponent = () => {
   );
 };
 
-export default Tab3Page;
+export default TabConfiguracionPage;

@@ -14,7 +14,7 @@ const Tab2: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
         <IonList>
           <IonItem href="/dashboard/notificaciones/details">
             <IonLabel>
-              <h2>Go to detail</h2>
+              <h2>Ir al detalle</h2>
             </IonLabel>
           </IonItem>
         </IonList>

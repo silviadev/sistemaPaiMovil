@@ -1,0 +1,18 @@
+.welcome-card img {
+    max-height: 35vh;
+    overflow: hidden;
+}
+
+.color-paciente-femenino{
+  background-color: #db54be;
+  color: white;
+}
+
+.color-paciente-masculino{
+  background-color: #0c6193;
+  color: white;
+}
+
+ion-card-subtitle.ion-inherit-color.md.hydrated {
+  color: white;
+}
