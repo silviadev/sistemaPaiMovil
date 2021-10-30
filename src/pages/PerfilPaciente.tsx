@@ -36,7 +36,7 @@ const PerfilPaciente: React.FunctionComponent = ({ match }: any) => {
       </IonHeader>
       <IonContent>
         {vacunas.map((vac, i) => {
-          const color = (vac["idPacienteVacuna"]) ? "success" : "light";
+          let color = (vac["fechaVacuna"]) ? "success" : (vac["fechaSiguienteDosis"] && !vac["fechaVacuna"]) ? "secondary": "light";
           return (
             <IonCard key={i} color={color} >
               <IonCardHeader>
