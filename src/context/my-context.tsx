@@ -19,7 +19,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
   const login = async ({ user, password }: { user: string; password: string }) => {
     const api = axios.create({
-      baseURL: `http://localhost/sistemaPAI/api`,
+      baseURL: `http://localhost/sistemaPai/api`,
       withCredentials: false,
     });
     const loginData = {

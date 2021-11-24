@@ -20,7 +20,7 @@ const Dashboard: React.FC<ResetProps> = ({ match }) => {
   
   useEffect(() => {
     const api = axios.create({
-      baseURL: `http://localhost/sistemaPAI/api`
+      baseURL: `http://localhost/sistemaPai/api`
     })
     api.get("/usuario/" + match.params.id)
       .then(res => {

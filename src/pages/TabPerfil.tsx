@@ -31,7 +31,7 @@ const TabPerfil: React.FunctionComponent = () => {
   useEffect(() => {
     console.log(authValues);
     const api = axios.create({
-      baseURL: `http://localhost/sistemaPAI/api`,
+      baseURL: `http://localhost/sistemaPai/api`,
     });
     api
       .get("/usuario/" + authValues.user.idUsuario + "/pacientes")

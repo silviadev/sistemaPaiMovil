@@ -9,7 +9,7 @@ const PerfilPaciente: React.FunctionComponent = ({ match }: any) => {
 
   useEffect(() => {
     const api = axios.create({
-      baseURL: `http://localhost/sistemaPAI/api`,
+      baseURL: `http://localhost/sistemaPai/api`,
     });
     api
       .get("/cliente/" + id)
