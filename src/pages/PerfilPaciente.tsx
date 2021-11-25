@@ -24,6 +24,7 @@ const PerfilPaciente: React.FunctionComponent = ({ match }: any) => {
 
   console.log(vacunas);
 
+  
   return (
     <React.Fragment>
       <IonHeader>
@@ -36,18 +37,23 @@ const PerfilPaciente: React.FunctionComponent = ({ match }: any) => {
       </IonHeader>
       <IonContent>
         {vacunas.map((vac, i) => {
+          const fechaVacuna = (vac["fechaVacuna"])
+          ? "Vacuna administrada en fecha: " + vac["fechaVacuna"]
+          : (!vac["fechaVacuna"] && vac["fechaSiguienteDosis"])
+          ? "Fecha de la siguiente vacuna: "+ vac["fechaSiguienteDosis"]: "";
+          
           let color = (vac["fechaVacuna"]) ? "success" : (vac["fechaSiguienteDosis"] && !vac["fechaVacuna"]) ? "secondary": "light";
           return (
             <IonCard key={i} color={color} >
               <IonCardHeader>
-                <IonCardSubtitle><IonBadge color="warning">{vac["rangoMesInicial"]} Meses</IonBadge></IonCardSubtitle>
+                <IonCardSubtitle><IonBadge color="warning">Se aplica a los {vac["rangoMesInicial"]} meses</IonBadge></IonCardSubtitle>
                 <IonCardTitle>{vac["nombrevacuna"]}</IonCardTitle>
               </IonCardHeader>
 
               <IonCardContent>
                 <p> {vac["dosis"]} Via {vac["nombrevia"]}
                 </p>
-                {vac["fechaVacuna"] && <p>Fecha vacuna: {vac["fechaVacuna"]}</p>}
+                {<p>{fechaVacuna}</p>}
               </IonCardContent>
             </IonCard>
           )

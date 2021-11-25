@@ -67,9 +67,9 @@ const Dashboard: React.FC<ResetProps> = ({ match }) => {
           <IonIcon icon={home} />
           <IonLabel>Inicio</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="notificaciones" href="/dashboard/notificaciones">
+        <IonTabButton tab="vacunas" href="/dashboard/notificaciones">
           <IonIcon icon={apps} />
-          <IonLabel>Notificaciones</IonLabel>
+          <IonLabel>Vacunas PAI</IonLabel>
         </IonTabButton>
         <IonTabButton tab="configuraciones" href="/dashboard/configuracion">
           <IonIcon icon={personCircle} />

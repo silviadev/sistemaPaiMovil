@@ -50,7 +50,7 @@ const Login = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Iniciar Session Pai</IonTitle>
+          <IonTitle>Iniciar Sesion</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen className="ion-padding ion-text-center">
@@ -81,7 +81,7 @@ const Login = () => {
           <IonRow>
             <IonCol>
               <IonButton color="primary" expand="block" onClick={(e) => handleLogin()}>
-                Iniciar Session
+                Iniciar Sesion
               </IonButton>
             </IonCol>
           </IonRow>
