@@ -36,11 +36,11 @@ const TabConfiguracionPage: React.FunctionComponent = () => {
       </IonHeader>
       <IonContent>
         <IonLabel>{authValues.user.nombre + " " + authValues.user.primerApellido + " "+  authValues.user.segundoApellido}
-          </IonLabel>
+        </IonLabel>
 
         <IonList lines="none">
           <IonListHeader>
-            <IonLabel>Resources</IonLabel>
+            <IonLabel>Perfil</IonLabel>
           </IonListHeader>
           <IonItem href="https://ionicframework.com/docs/" target="_blank">
             <IonIcon slot="start" color="medium" icon={book} />

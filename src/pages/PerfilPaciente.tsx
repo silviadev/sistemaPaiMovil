@@ -57,8 +57,6 @@ const PerfilPaciente: React.FunctionComponent = ({ match }: any) => {
               </IonCardContent>
             </IonCard>
           )
-
-
         })}
 
 

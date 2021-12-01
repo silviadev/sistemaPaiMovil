@@ -1,7 +1,7 @@
 import React from "react";
-import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from "@ionic/react";
+import { IonApp, IonRouterOutlet } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { Redirect, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -24,13 +24,8 @@ import Dashboard from "./pages/Dashboard";
 
 /* Theme variables */
 import "./theme/variables.css";
-
-import Tab1 from "./pages/TabPerfil";
-import Tab2 from "./pages/TabNotificiaciones";
-import Details from "./pages/Details";
-import { apps, home, personCircle } from "ionicons/icons";
-
 import AuthContext from "./context/my-context";
+
 const App: React.FC = () => {
   const { authValues } = React.useContext(AuthContext);
   console.log(authValues);
